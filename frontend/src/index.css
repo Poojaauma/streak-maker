@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 6% 7%;
+    --foreground: 40 10% 92%;
+
+    --card: 240 5% 11%;
+    --card-foreground: 40 10% 92%;
+
+    --popover: 240 5% 13%;
+    --popover-foreground: 40 10% 92%;
+
+    --primary: 32 95% 54%;
+    --primary-foreground: 240 6% 7%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 40 10% 92%;
+
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 50%;
+
+    --accent: 152 60% 46%;
+    --accent-foreground: 240 6% 7%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 40 10% 92%;
+
+    --border: 240 4% 18%;
+    --input: 240 4% 18%;
+    --ring: 32 95% 54%;
+
+    --radius: 0.75rem;
+
+    --streak: 32 95% 54%;
+    --streak-glow: 32 100% 60%;
+    --success: 152 60% 46%;
+    --missed: 0 72% 51%;
+    --surface-hover: 240 4% 14%;
+
+    --sidebar-background: 240 6% 7%;
+    --sidebar-foreground: 40 10% 92%;
+    --sidebar-primary: 32 95% 54%;
+    --sidebar-primary-foreground: 240 6% 7%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 40 10% 92%;
+    --sidebar-border: 240 4% 18%;
+    --sidebar-ring: 32 95% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .streak-glow {
+    box-shadow: 0 0 30px hsl(var(--streak) / 0.15),
+                0 0 60px hsl(var(--streak) / 0.08);
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .card-hover:hover {
+    background-color: hsl(var(--surface-hover));
+    box-shadow: 0 4px 24px hsl(0 0% 0% / 0.3);
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pulse-streak {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
