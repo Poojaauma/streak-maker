@@ -1,16 +1,48 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Tag } from "@/lib/dummy-data";
+import StreakDisplay from "@/components/StreakDisplay";
+import StreakCalendar from "@/components/StreakCalendar";
+import LogEntry from "@/components/LogEntry";
+import BadgeGrid from "@/components/BadgeGrid";
+import AIInsights from "@/components/AIInsights";
+import RecentEntries from "@/components/RecentEntries";
+import { Flame } from "lucide-react";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const [, setEntries] = useState<{ content: string; tags: Tag[] }[]>([]);
+
+  const handleLog = (content: string, tags: Tag[]) => {
+    setEntries(prev => [...prev, { content, tags }]);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border">
+        <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Flame className="h-5 w-5 text-primary" />
+            <span className="font-bold text-sm tracking-tight text-foreground">No Zero Days</span>
+          </div>
+          <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center text-xs font-semibold text-foreground">
+            AK
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-lg mx-auto px-4 py-6 space-y-5 pb-24">
+        <StreakDisplay />
+        <LogEntry onLog={handleLog} />
+        <StreakCalendar />
+        <RecentEntries />
+        <div className="grid grid-cols-1 gap-5">
+          <BadgeGrid />
+          <AIInsights />
+        </div>
+      </main>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
