@@ -19,6 +19,10 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        streak: "hsl(var(--streak))",
+        "streak-glow": "hsl(var(--streak-glow))",
+        success: "hsl(var(--success))",
+        missed: "hsl(var(--missed))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
